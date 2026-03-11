@@ -1,0 +1,8 @@
+.ui-user-layout__container {
+	min-height: calc(100vh - 56px);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 2rem;
+	box-sizing: border-box;
+}
