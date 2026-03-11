@@ -1,0 +1,240 @@
+import { useMemo, useState } from 'react'
+import { Navigate, NavLink, Route, Routes } from 'react-router-dom'
+import './App.css'
+import {
+  BookScraperPageLayout,
+  BooksPageLayout,
+  DownloadPageLayout,
+  GenericNavbar,
+  ToggleSwitch,
+  UserPageLayout,
+} from './UI'
+
+const PAGE_LINKS = [
+  { key: 'home', label: 'Home', href: '/' },
+  { key: 'book-scraper', label: 'Book Scraper', href: '/book-scraper' },
+  { key: 'books', label: 'Books', href: '/books' },
+  { key: 'download', label: 'Download', href: '/download' },
+  { key: 'user', label: 'User', href: '/user' },
+]
+
+const BOOKS = [
+  {
+    title: 'The Windbound Atlas',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.',
+    totalChapters: 18,
+  },
+  {
+    title: 'Fragments of a Quiet Star',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.',
+    totalChapters: 26,
+  },
+  {
+    title: 'A Study in Ember and Rain',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras mattis consectetur purus sit amet.',
+    totalChapters: 12,
+  },
+  {
+    title: 'Northern Current Chronicles',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lacinia bibendum nulla sed.',
+    totalChapters: 31,
+  },
+]
+
+const SITES = ['Royal Road', 'Scribble Hub', 'Archive of Our Own', 'FanFiction.net', 'SpaceBattles']
+
+function ContentCard({ title, children }) {
+  return (
+    <article className="app-card">
+      <h2 className="app-card__title">{title}</h2>
+      <div className="app-card__body">{children}</div>
+    </article>
+  )
+}
+
+function PageSection({ title, children }) {
+  return (
+    <section className="app-page-shell">
+      <header className="app-page-header">
+        <h1 className="app-page-title">{title}</h1>
+      </header>
+      {children}
+    </section>
+  )
+}
+
+function HomePreview() {
+  return (
+    <section className="app-home">
+      <h1 className="app-home__title">WELCOME TO HOME PAGE</h1>
+    </section>
+  )
+}
+
+function BookScraperPreview() {
+  return (
+    <PageSection title="Book Scraper Page Layout">
+      <BookScraperPageLayout
+        leftPanel={
+          <ContentCard title="Filters">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>
+          </ContentCard>
+        }
+        main={
+          <ContentCard title="Scraper Results">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+            <p>Curabitur blandit tempus porttitor. Nulla vitae elit libero, a pharetra augue.</p>
+          </ContentCard>
+        }
+        rightPanel={
+          <ContentCard title="Statistics">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p>Donec id elit non mi porta gravida at eget metus.</p>
+          </ContentCard>
+        }
+      />
+    </PageSection>
+  )
+}
+
+function BooksPreview({ showAdultWorks, setShowAdultWorks }) {
+  return (
+    <PageSection title="Books Page Layout">
+      <>
+        <BooksPageLayout
+          heading={null}
+          sidebar={
+            <ContentCard title="List of Sites">
+              <ul className="app-site-list">
+                {SITES.map((site) => (
+                  <li key={site}>{site}</li>
+                ))}
+              </ul>
+              <ToggleSwitch
+                label="Show Adult Works?"
+                checked={showAdultWorks}
+                onCheckedChange={setShowAdultWorks}
+              />
+            </ContentCard>
+          }
+          content={
+            <ContentCard title="Books">
+              <section className="app-books-grid">
+                {BOOKS.map((book) => (
+                  <article key={book.title} className="app-book-card">
+                    <h3>{book.title}</h3>
+                    <p>{book.description}</p>
+                    <p>
+                      <strong>Total Chapters:</strong> {book.totalChapters}
+                    </p>
+                  </article>
+                ))}
+              </section>
+            </ContentCard>
+          }
+        />
+        {showAdultWorks ? (
+          <div className="app-modal" role="dialog" aria-modal="false">
+            <strong>Adult Works Enabled</strong>
+            <p>Additional adult works would appear in the books list.</p>
+          </div>
+        ) : null}
+      </>
+    </PageSection>
+  )
+}
+
+function DownloadPreview() {
+  return (
+    <PageSection title="Download Page Layout">
+      <DownloadPageLayout
+        header={null}
+        main={
+          <section className="app-grid">
+            <ContentCard title="Available Data">
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+            </ContentCard>
+            <ContentCard title="READ ME">
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+            </ContentCard>
+          </section>
+        }
+      />
+    </PageSection>
+  )
+}
+
+function UserPreview({ showModal }) {
+  return (
+    <UserPageLayout
+      content={
+        <ContentCard title="User Profile">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <p>Etiam porta sem malesuada magna mollis euismod.</p>
+        </ContentCard>
+      }
+      modal={
+        showModal ? (
+          <div className="app-modal" role="dialog" aria-modal="false">
+            <strong>User Info Modal</strong>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </div>
+        ) : null
+      }
+    />
+  )
+}
+
+function App() {
+  const [showModal, setShowModal] = useState(true)
+  const [showAdultWorks, setShowAdultWorks] = useState(false)
+
+  const nav = useMemo(
+    () => (
+      <GenericNavbar
+        leftLinks={PAGE_LINKS}
+        centerLinks={[{ key: 'health', label: 'API Health', href: 'http://127.0.0.1:8000/api/health' }]}
+        rightContent={<ToggleSwitch label="User Modal" checked={showModal} onCheckedChange={setShowModal} />}
+        renderLink={(link, className) => {
+          const href = link?.href ?? '/'
+          const isExternal = href.startsWith('http://') || href.startsWith('https://')
+          if (isExternal) {
+            return (
+              <a className={className} href={href} target="_blank" rel="noreferrer">
+                {link?.label}
+              </a>
+            )
+          }
+          return (
+            <NavLink
+              to={href}
+              className={({ isActive }) => `${className}${isActive ? ' app-nav-link--active' : ''}`}
+            >
+              {link?.label}
+            </NavLink>
+          )
+        }}
+      />
+    ),
+    [showModal],
+  )
+
+  return (
+    <>
+      {nav}
+      <Routes>
+        <Route path="/" element={<HomePreview />} />
+        <Route path="/book-scraper" element={<BookScraperPreview />} />
+        <Route path="/books" element={<BooksPreview showAdultWorks={showAdultWorks} setShowAdultWorks={setShowAdultWorks} />} />
+        <Route path="/download" element={<DownloadPreview />} />
+        <Route path="/user" element={<UserPreview showModal={showModal} />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </>
+  )
+}
+
+export default App

@@ -1,0 +1,143 @@
+#root {
+  min-height: 100vh;
+}
+
+.app-page-shell {
+  padding: 1.25rem 1.25rem 0;
+}
+
+.app-page-header {
+  max-width: 1200px;
+  margin: 0 auto 1rem;
+  text-align: center;
+}
+
+.app-page-title {
+  margin: 0;
+  font-size: 1.75rem;
+  line-height: 1.2;
+}
+
+.app-home {
+  min-height: calc(100vh - 56px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-home__title {
+  margin: 0;
+  font-size: clamp(2.2rem, 7vw, 5rem);
+  letter-spacing: 0.05em;
+}
+
+.app-card {
+  background: #ffffff;
+  border: 1px solid #dde6f0;
+  border-radius: 12px;
+  box-shadow: 0 6px 24px rgba(15, 23, 42, 0.08);
+  padding: 1rem;
+}
+
+.app-card__title {
+  margin: 0 0 0.6rem;
+  font-size: 1.05rem;
+}
+
+.app-card__body p {
+  margin: 0 0 0.75rem;
+}
+
+.app-card__body p:last-child {
+  margin-bottom: 0;
+}
+
+.app-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.app-site-list {
+  margin: 0 0 0.9rem;
+  padding-left: 1.1rem;
+}
+
+.app-site-list li {
+  margin-bottom: 0.5rem;
+}
+
+.app-inline-button {
+  border: 1px solid #c6d4e4;
+  background: #f8fafc;
+  color: #111827;
+  border-radius: 8px;
+  padding: 0.5rem 0.85rem;
+  cursor: pointer;
+}
+
+.app-inline-button:hover {
+  background: #eef4fb;
+}
+
+.app-books-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.75rem;
+}
+
+.app-book-card {
+  background: #f8fafc;
+  border: 1px solid #d9e4f0;
+  border-radius: 10px;
+  padding: 0.85rem;
+}
+
+.app-book-card h3 {
+  margin: 0 0 0.45rem;
+  font-size: 1rem;
+}
+
+.app-book-card p {
+  margin: 0 0 0.55rem;
+}
+
+.app-book-card p:last-child {
+  margin-bottom: 0;
+}
+
+.app-modal {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  max-width: 320px;
+  background: #1f2937;
+  color: #f9fafb;
+  border-radius: 10px;
+  padding: 0.9rem;
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.28);
+}
+
+.app-modal p {
+  margin: 0.45rem 0 0;
+}
+
+.app-nav-link--active {
+  background: #4b5563;
+}
+
+.app-page-shell .ui-books-layout {
+  margin-top: 0.5rem;
+}
+
+.app-page-shell .ui-scraper-layout__container {
+  margin-top: 0.5rem;
+}
+
+.app-page-shell .ui-download-layout {
+  min-height: auto;
+}

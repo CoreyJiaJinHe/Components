@@ -1,0 +1,32 @@
+.ui-books-layout__heading {
+	text-align: center;
+	margin-top: 1.5rem;
+	margin-bottom: 1.5rem;
+	box-sizing: border-box;
+}
+
+.ui-books-layout {
+	margin-top: 2.5rem;
+	display: flex;
+	justify-content: center;
+	gap: 1rem;
+	box-sizing: border-box;
+}
+
+.ui-books-layout__sidebar {
+	width: 14rem;
+	min-width: 12rem;
+	max-height: 80vh;
+	overflow-y: auto;
+	position: sticky;
+	top: 6rem;
+	box-sizing: border-box;
+}
+
+.ui-books-layout__content {
+	flex: 1 1 0%;
+	max-width: 72rem;
+	height: 80vh;
+	overflow-y: auto;
+	box-sizing: border-box;
+}
