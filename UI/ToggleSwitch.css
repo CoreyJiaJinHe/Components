@@ -1,4 +1,4 @@
-.ui-toggle {
+.Component-Toggle-Switch-Container {
 	display: inline-flex;
 	align-items: center;
 	gap: 0.75rem;
@@ -6,41 +6,41 @@
 	cursor: pointer;
 }
 
-.ui-toggle--disabled {
+.Component-Toggle-Switch-Disabled {
 	opacity: 0.6;
 	cursor: not-allowed;
 }
 
-.ui-toggle__label {
+.Component-Toggle-Switch-Label {
 	font-weight: 600;
 }
 
-.ui-toggle__switch {
+.Component-Toggle-Switch-Track-Wrapper {
 	position: relative;
 	width: 46px;
 	height: 24px;
 	display: inline-block;
 }
 
-.ui-toggle__switch input {
+.Component-Toggle-Switch-Track-Wrapper input {
 	opacity: 0;
 	width: 0;
 	height: 0;
 }
 
-.ui-toggle__slider {
-	--ui-toggle-off: #d1d5db;
-	--ui-toggle-on: #3b82f6;
+.Component-Toggle-Switch-Slider {
+	--Component-Toggle-Switch-Off: #d1d5db;
+	--Component-Toggle-Switch-On: #3b82f6;
 
 	position: absolute;
 	inset: 0;
-	background: var(--ui-toggle-off);
+	background: var(--Component-Toggle-Switch-Off);
 	border-radius: 9999px;
 	transition: background 0.2s ease;
 	box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
 }
 
-.ui-toggle__slider::before {
+.Component-Toggle-Switch-Slider::before {
 	content: "";
 	position: absolute;
 	height: 18px;
@@ -53,15 +53,15 @@
 	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
-.ui-toggle__switch input:checked + .ui-toggle__slider {
-	background: var(--ui-toggle-on);
+.Component-Toggle-Switch-Track-Wrapper input:checked + .Component-Toggle-Switch-Slider {
+	background: var(--Component-Toggle-Switch-On);
 }
 
-.ui-toggle__switch input:checked + .ui-toggle__slider::before {
+.Component-Toggle-Switch-Track-Wrapper input:checked + .Component-Toggle-Switch-Slider::before {
 	transform: translateX(22px);
 }
 
-.ui-toggle__switch input:focus-visible + .ui-toggle__slider {
-	outline: 2px solid var(--ui-toggle-on);
+.Component-Toggle-Switch-Track-Wrapper input:focus-visible + .Component-Toggle-Switch-Slider {
+	outline: 2px solid var(--Component-Toggle-Switch-On);
 	outline-offset: 2px;
 }

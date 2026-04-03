@@ -53,20 +53,20 @@ function GenericNavbar({
 	function renderLinks(links) {
 		return (links || []).map((link, index) => {
 			const key = link?.key ?? link?.href ?? link?.label ?? index;
-			return <li key={key}>{renderLinkFn(link, "ui-navbar__link")}</li>;
+			return <li key={key}>{renderLinkFn(link, "Component-Generic-Navbar-Link-Anchor")}</li>;
 		});
 	}
 
 	return (
-		<nav className={isMobile ? "ui-navbar ui-navbar--mobile" : "ui-navbar ui-navbar--desktop"}>
-			<div className="ui-navbar__left">
-				<ul className="ui-navbar__links">{renderLinks(leftLinks)}</ul>
+		<nav className={isMobile ? "Component-Generic-Navbar-Container Component-Generic-Navbar-Mobile-Mode" : "Component-Generic-Navbar-Container Component-Generic-Navbar-Desktop-Mode"}>
+			<div className="Component-Generic-Navbar-Left-Section">
+				<ul className="Component-Generic-Navbar-Links-List">{renderLinks(leftLinks)}</ul>
 			</div>
-			<div className="ui-navbar__center">
-				<ul className="ui-navbar__links">{renderLinks(centerLinks)}</ul>
+			<div className="Component-Generic-Navbar-Center-Section">
+				<ul className="Component-Generic-Navbar-Links-List">{renderLinks(centerLinks)}</ul>
 			</div>
-			<div className="ui-navbar__right">
-				<ul className="ui-navbar__links">{renderLinks(rightLinks)}</ul>
+			<div className="Component-Generic-Navbar-Right-Section">
+				<ul className="Component-Generic-Navbar-Links-List">{renderLinks(rightLinks)}</ul>
 				{rightContent}
 			</div>
 		</nav>

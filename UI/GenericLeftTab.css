@@ -1,0 +1,55 @@
+.Component-Generic-Left-Tab-Container {
+	position: fixed;
+	top: 16px;
+	left: 0;
+	width: 150px;
+	display: flex;
+	align-items: center;
+	padding: 16px;
+	border: 1px solid #9ca3af;
+	border-left: none;
+	border-radius: 0 12px 12px 0;
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+	z-index: 1000;
+	transition: transform 220ms ease;
+}
+
+.Component-Generic-Left-Tab-Open {
+	transform: translateX(0);
+}
+
+.Component-Generic-Left-Tab-Closed {
+	transform: translateX(calc(-100% + 20px));
+}
+
+.Component-Generic-Left-Tab-Night {
+	background-color: #111827;
+}
+
+.Component-Generic-Left-Tab-Day {
+	background-color: #e5e7eb;
+}
+
+.Component-Generic-Left-Tab-Toggle {
+	position: absolute;
+	top: 16px;
+	right: -18px;
+	width: 36px;
+	height: 36px;
+	border-radius: 50%;
+	border: 1px solid #6b7280;
+	cursor: pointer;
+	font-size: 18px;
+	font-weight: bold;
+	line-height: 1;
+}
+
+.Component-Generic-Left-Tab-Toggle.Component-Generic-Left-Tab-Night {
+	background-color: #0f172a;
+	color: #f9fafb;
+}
+
+.Component-Generic-Left-Tab-Toggle.Component-Generic-Left-Tab-Day {
+	background-color: #ffffff;
+	color: #1f2937;
+}

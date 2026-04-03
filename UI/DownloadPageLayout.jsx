@@ -13,9 +13,9 @@ function DownloadPageLayout({ nav = null, header = null, main = null }) {
 	return (
 		<>
 			{nav}
-			<div className="ui-download-layout">
-				<header className="ui-download-layout__header">{header}</header>
-				<main className="ui-download-layout__main">{main}</main>
+			<div className="Download-Page-Layout-Container">
+				<header className="Download-Page-Layout-Header">{header}</header>
+				<main className="Download-Page-Layout-Main-Section">{main}</main>
 			</div>
 		</>
 	);

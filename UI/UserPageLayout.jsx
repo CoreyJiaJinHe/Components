@@ -13,7 +13,7 @@ function UserPageLayout({ nav = null, content = null, modal = null }) {
 	return (
 		<>
 			{nav}
-			<div className="ui-user-layout__container">{content}</div>
+			<div className="User-Page-Layout-Container">{content}</div>
 			{modal}
 		</>
 	);

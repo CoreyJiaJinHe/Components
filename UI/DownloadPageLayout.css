@@ -1,11 +1,11 @@
-.ui-download-layout {
+.Download-Page-Layout-Container {
 	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
 	box-sizing: border-box;
 }
 
-.ui-download-layout__header {
+.Download-Page-Layout-Header {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -13,7 +13,7 @@
 	box-sizing: border-box;
 }
 
-.ui-download-layout__main {
+.Download-Page-Layout-Main-Section {
 	flex: 1;
 	width: 100%;
 	box-sizing: border-box;

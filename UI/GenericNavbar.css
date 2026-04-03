@@ -1,13 +1,13 @@
 :root {
-	--ui-navbar-bg: #23272a;
-	--ui-navbar-fg: #ffffff;
-	--ui-navbar-hover-bg: #393e46;
+	--Component-Generic-Navbar-Bg: #23272a;
+	--Component-Generic-Navbar-Fg: #ffffff;
+	--Component-Generic-Navbar-Hover-Bg: #393e46;
 }
 
-.ui-navbar {
+.Component-Generic-Navbar-Container {
 	width: 100%;
-	background: var(--ui-navbar-bg);
-	color: var(--ui-navbar-fg);
+	background: var(--Component-Generic-Navbar-Bg);
+	color: var(--Component-Generic-Navbar-Fg);
 	display: flex;
 	align-items: center;
 	padding: 0 24px;
@@ -15,30 +15,30 @@
 	box-sizing: border-box;
 }
 
-.ui-navbar__left,
-.ui-navbar__center,
-.ui-navbar__right {
+.Component-Generic-Navbar-Left-Section,
+.Component-Generic-Navbar-Center-Section,
+.Component-Generic-Navbar-Right-Section {
 	display: flex;
 	align-items: center;
 	height: 100%;
 }
 
-.ui-navbar__left {
+.Component-Generic-Navbar-Left-Section {
 	flex: 1;
 }
 
-.ui-navbar__center {
+.Component-Generic-Navbar-Center-Section {
 	flex: 1;
 	justify-content: center;
 }
 
-.ui-navbar__right {
+.Component-Generic-Navbar-Right-Section {
 	margin-left: auto;
 	justify-content: flex-end;
 	gap: 12px;
 }
 
-.ui-navbar__links {
+.Component-Generic-Navbar-Links-List {
 	display: flex;
 	align-items: center;
 	height: 100%;
@@ -48,8 +48,8 @@
 	margin: 0;
 }
 
-.ui-navbar__link {
-	color: var(--ui-navbar-fg);
+.Component-Generic-Navbar-Link-Anchor {
+	color: var(--Component-Generic-Navbar-Fg);
 	text-decoration: none;
 	font-weight: 500;
 	padding: 8px 12px;
@@ -57,19 +57,19 @@
 	transition: background 0.2s;
 }
 
-.ui-navbar__link:hover {
-	background: var(--ui-navbar-hover-bg);
+.Component-Generic-Navbar-Link-Anchor:hover {
+	background: var(--Component-Generic-Navbar-Hover-Bg);
 }
 
-.ui-navbar--mobile {
+.Component-Generic-Navbar-Mobile-Mode {
 	padding: 0 8px;
 }
 
-.ui-navbar--mobile .ui-navbar__links {
+.Component-Generic-Navbar-Mobile-Mode .Component-Generic-Navbar-Links-List {
 	gap: 0.5em;
 }
 
-.ui-navbar--mobile .ui-navbar__link {
+.Component-Generic-Navbar-Mobile-Mode .Component-Generic-Navbar-Link-Anchor {
 	padding: 0.5em 0.7em;
 	border-radius: 0;
 	min-width: 60px;
