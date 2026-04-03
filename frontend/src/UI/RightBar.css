@@ -1,0 +1,69 @@
+.Component-Right-Bar-Container{
+    position: fixed;
+    top: 16px;
+    right: 0;
+    width: 230px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    border: 1px solid #9ca3af;
+    border-right: none;
+    border-radius: 12px 0 0 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    transform: translateX(calc(100% - 20px));
+    transition: transform 220ms ease;
+}
+
+.Component-Right-Bar-Container.Component-Right-Bar-Night-Mode {
+    background-color: #111827;
+    border: 1px solid #374151;
+}
+
+.Component-Right-Bar-Container.Component-Right-Bar-Day-Mode{
+    background-color: #e5e7eb;
+    border: 1px solid #9ca3af;
+}
+
+.Component-Right-Bar-Open {
+    transform: translateX(0);
+}
+
+.Component-Right-Bar-Toggle-Button{
+    position: absolute;
+    top: 50%;
+    left: -18px;
+    transform: translateY(-50%);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid #6b7280;
+    background-color: #ffffff;
+    color: #1f2937;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.Component-Right-Bar-Toggle-Button.Component-Right-Bar-Night-Mode {
+    background-color: #0f172a;
+    color: #f9fafb;
+}
+
+.Component-Right-Bar-Toggle-Button.Component-Right-Bar-Day-Mode {
+    background-color: #ffffff;
+    color: #1f2937;
+}
+
+.Component-Right-Bar-Container .Component-Right-Bar-Toggle-Container {
+    width: 100%;
+    margin-bottom: 0;
+}
+
+.Component-Right-Bar-Container .Component-Toggle-Switch-Container {
+    width: 100%;
+    justify-content: space-between;
+}

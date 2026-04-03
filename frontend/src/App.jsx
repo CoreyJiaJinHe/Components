@@ -9,6 +9,7 @@ import {
   ToggleSwitch,
   UserPageLayout,
 } from './UI'
+import RightBar from './UI/RightBar'
 
 const PAGE_LINKS = [
   { key: 'home', label: 'Home', href: '/' },
@@ -45,18 +46,18 @@ const SITES = ['Royal Road', 'Scribble Hub', 'Archive of Our Own', 'FanFiction.n
 
 function ContentCard({ title, children }) {
   return (
-    <article className="app-card">
-      <h2 className="app-card__title">{title}</h2>
-      <div className="app-card__body">{children}</div>
+    <article className="Component-App-Content-Card-Container">
+      <h2 className="Component-App-Content-Card-Title">{title}</h2>
+      <div className="Component-App-Content-Card-Body">{children}</div>
     </article>
   )
 }
 
 function PageSection({ title, children }) {
   return (
-    <section className="app-page-shell">
-      <header className="app-page-header">
-        <h1 className="app-page-title">{title}</h1>
+    <section className="Component-App-Page-Section">
+      <header className="Component-App-Page-Header">
+        <h1 className="Component-App-Page-Title">{title}</h1>
       </header>
       {children}
     </section>
@@ -65,8 +66,8 @@ function PageSection({ title, children }) {
 
 function HomePreview() {
   return (
-    <section className="app-home">
-      <h1 className="app-home__title">WELCOME TO HOME PAGE</h1>
+    <section className="Home-Page-Container">
+      <h1 className="Home-Page-Title">WELCOME TO HOME PAGE</h1>
     </section>
   )
 }
@@ -106,7 +107,7 @@ function BooksPreview({ showAdultWorks, setShowAdultWorks }) {
           heading={null}
           sidebar={
             <ContentCard title="List of Sites">
-              <ul className="app-site-list">
+              <ul className="Books-Page-Site-List">
                 {SITES.map((site) => (
                   <li key={site}>{site}</li>
                 ))}
@@ -120,9 +121,9 @@ function BooksPreview({ showAdultWorks, setShowAdultWorks }) {
           }
           content={
             <ContentCard title="Books">
-              <section className="app-books-grid">
+              <section className="Books-Page-Grid-Section">
                 {BOOKS.map((book) => (
-                  <article key={book.title} className="app-book-card">
+                  <article key={book.title} className="Books-Page-Card-Container">
                     <h3>{book.title}</h3>
                     <p>{book.description}</p>
                     <p>
@@ -135,7 +136,7 @@ function BooksPreview({ showAdultWorks, setShowAdultWorks }) {
           }
         />
         {showAdultWorks ? (
-          <div className="app-modal" role="dialog" aria-modal="false">
+          <div className="Component-App-Modal-Container" role="dialog" aria-modal="false">
             <strong>Adult Works Enabled</strong>
             <p>Additional adult works would appear in the books list.</p>
           </div>
@@ -151,7 +152,7 @@ function DownloadPreview() {
       <DownloadPageLayout
         header={null}
         main={
-          <section className="app-grid">
+          <section className="Component-App-Grid-Section">
             <ContentCard title="Available Data">
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
               <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
@@ -167,20 +168,22 @@ function DownloadPreview() {
   )
 }
 
-function UserPreview({ showModal }) {
+function UserPreview({ showModal, enableBurnable = false}) {
   return (
     <UserPageLayout
+      enableBurnable={enableBurnable}
       content={
         <ContentCard title="User Profile">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          <p>Etiam porta sem malesuada magna mollis euismod.</p>
+          <strong>Person Name Here:</strong>
+          <p>You're looking at a generic user profile.</p>
+          <p>They like various things.</p>
         </ContentCard>
       }
       modal={
         showModal ? (
-          <div className="app-modal" role="dialog" aria-modal="false">
+          <div className="Component-App-Modal-Container" role="dialog" aria-modal="false">
             <strong>User Info Modal</strong>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p>I am a little bar in the bottom right!</p>
           </div>
         ) : null
       }
@@ -191,13 +194,16 @@ function UserPreview({ showModal }) {
 function App() {
   const [showModal, setShowModal] = useState(true)
   const [showAdultWorks, setShowAdultWorks] = useState(false)
+  const [enableBurnable, setEnableBurnable] = useState(false)
+  const [isRightBarOpen, setIsRightBarOpen] = useState(false)
+  const [nightMode, setNightMode] = useState(false)
 
   const nav = useMemo(
     () => (
       <GenericNavbar
         leftLinks={PAGE_LINKS}
         centerLinks={[{ key: 'health', label: 'API Health', href: 'http://127.0.0.1:8000/api/health' }]}
-        rightContent={<ToggleSwitch label="User Modal" checked={showModal} onCheckedChange={setShowModal} />}
+        rightContent={null}
         renderLink={(link, className) => {
           const href = link?.href ?? '/'
           const isExternal = href.startsWith('http://') || href.startsWith('https://')
@@ -211,7 +217,7 @@ function App() {
           return (
             <NavLink
               to={href}
-              className={({ isActive }) => `${className}${isActive ? ' app-nav-link--active' : ''}`}
+              className={({ isActive }) => `${className}${isActive ? ' Component-App-Nav-Link-Active' : ''}`}
             >
               {link?.label}
             </NavLink>
@@ -219,21 +225,31 @@ function App() {
         }}
       />
     ),
-    [showModal],
+    [],
   )
 
   return (
-    <>
+    <div className={nightMode ? 'Component-App-Theme-Container Component-App-Theme-Night' : 'Component-App-Theme-Container Component-App-Theme-Day'}>
       {nav}
+      <RightBar
+        isRightBarOpen={isRightBarOpen}
+        setIsRightBarOpen={setIsRightBarOpen}
+        nightMode={nightMode}
+        setNightMode={setNightMode}
+        showModal={showModal}
+        setShowModal={setShowModal}
+        enableBurnable={enableBurnable}
+        setEnableBurnable={setEnableBurnable}
+      />
       <Routes>
         <Route path="/" element={<HomePreview />} />
         <Route path="/book-scraper" element={<BookScraperPreview />} />
         <Route path="/books" element={<BooksPreview showAdultWorks={showAdultWorks} setShowAdultWorks={setShowAdultWorks} />} />
         <Route path="/download" element={<DownloadPreview />} />
-        <Route path="/user" element={<UserPreview showModal={showModal} />} />
+        <Route path="/user" element={<UserPreview showModal={showModal} enableBurnable={enableBurnable} />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
-    </>
+    </div>
   )
 }
 

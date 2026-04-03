@@ -1,0 +1,282 @@
+.Component-Disintegration-Card-Wrapper {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 0.95rem;
+	align-items: center;
+}
+
+.Component-Disintegration-Card-Container {
+	position: relative;
+	width: 100%;
+	border-radius: 12px;
+	overflow: hidden;
+	transition: transform 0.5s ease, opacity 0.6s ease, filter 0.45s ease;
+	will-change: transform, opacity, filter;
+}
+
+.Component-Disintegration-Card-Content {
+	position: relative;
+	z-index: 2;
+}
+
+.Component-Disintegration-Card-Overlay {
+	position: absolute;
+	inset: 0;
+	border-radius: inherit;
+	pointer-events: none;
+	z-index: 3;
+	opacity: 0;
+}
+
+.Component-Disintegration-Card-Particles-Container {
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	z-index: 4;
+}
+
+.Component-Disintegration-Card-Particle {
+	position: absolute;
+	left: var(--dis-p-left, 50%);
+	top: var(--dis-p-top, 76%);
+	width: var(--dis-p-size, 8px);
+	height: var(--dis-p-size, 8px);
+	border-radius: 50%;
+	background: radial-gradient(circle, #fff1d0 0%, var(--dis-p-color, rgba(255, 134, 50, 0.8)) 56%, transparent 100%);
+	box-shadow: 0 0 9px color-mix(in srgb, var(--dis-p-color, rgba(255, 134, 50, 0.8)) 80%, transparent);
+	opacity: 0;
+	animation: Component-Disintegration-Card-Keyframes-Particle-Rise var(--dis-p-duration, 1s) ease-out var(--dis-p-delay, 0s) forwards;
+}
+
+.Component-Disintegration-Card-Controls {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 0.55rem;
+	width: 100%;
+}
+
+.Component-Disintegration-Card-Button {
+	border: 1px solid transparent;
+	border-radius: 999px;
+	padding: 0.56rem 1rem;
+	font-weight: 700;
+	cursor: pointer;
+	transition: transform 0.16s ease, box-shadow 0.2s ease, opacity 0.16s ease;
+}
+
+.Component-Disintegration-Card-Button:hover:not(:disabled) {
+	transform: translateY(-1px);
+}
+
+.Component-Disintegration-Card-Button:disabled {
+	opacity: 0.64;
+	cursor: not-allowed;
+}
+
+.Component-Disintegration-Card-Button-Dust {
+	background: linear-gradient(180deg, #e5e7eb 0%, #cbd5e1 100%);
+	border-color: #94a3b8;
+	color: #334155;
+}
+
+.Component-Disintegration-Card-Button-Fire {
+	background: linear-gradient(180deg, #ffbb6f 0%, #f97316 100%);
+	border-color: #c2410c;
+	color: #431407;
+}
+
+.Component-Disintegration-Card-Button-Destruction {
+	background: linear-gradient(180deg, #ffd67a 0%, #dc2626 100%);
+	border-color: #7f1d1d;
+	color: #fff7ed;
+}
+
+.Component-Disintegration-Card-Button-Restore {
+	background: #e2e8f0;
+	border-color: #94a3b8;
+	color: #1e293b;
+}
+
+.Component-Disintegration-Card-Mode-dust.Component-Disintegration-Card-State-animating .Component-Disintegration-Card-Content {
+	animation: Component-Disintegration-Card-Keyframes-Dust-Content 0.95s ease forwards;
+}
+
+.Component-Disintegration-Card-Mode-dust.Component-Disintegration-Card-State-animating .Component-Disintegration-Card-Overlay {
+	background: linear-gradient(to top, rgba(203, 213, 225, 0.48) 0%, rgba(148, 163, 184, 0.2) 42%, rgba(100, 116, 139, 0.06) 68%, transparent 100%);
+	animation: Component-Disintegration-Card-Keyframes-Overlay-Fade 0.95s ease forwards;
+}
+
+.Component-Disintegration-Card-Mode-fire.Component-Disintegration-Card-State-animating .Component-Disintegration-Card-Content {
+	animation: Component-Disintegration-Card-Keyframes-Fire-Content 1.25s ease forwards;
+}
+
+.Component-Disintegration-Card-Mode-fire.Component-Disintegration-Card-State-animating .Component-Disintegration-Card-Overlay {
+	background:
+		linear-gradient(to top, rgba(255, 213, 128, 0.9) 0%, rgba(255, 145, 55, 0.58) 28%, rgba(255, 96, 0, 0.24) 55%, transparent 82%),
+		linear-gradient(120deg, rgba(255, 120, 40, 0.26) 0%, rgba(255, 72, 0, 0.2) 42%, transparent 78%),
+		linear-gradient(300deg, rgba(255, 190, 90, 0.22) 0%, rgba(255, 110, 38, 0.16) 45%, transparent 80%);
+	mix-blend-mode: screen;
+	animation: Component-Disintegration-Card-Keyframes-Fire-Overlay 1.25s ease forwards;
+}
+
+.Component-Disintegration-Card-Mode-destruction.Component-Disintegration-Card-State-animating .Component-Disintegration-Card-Content {
+	animation: Component-Disintegration-Card-Keyframes-Destruction-Content var(--destruction-duration, 2000ms) linear forwards;
+}
+
+.Component-Disintegration-Card-Mode-destruction.Component-Disintegration-Card-State-animating .Component-Disintegration-Card-Overlay {
+	background:
+		linear-gradient(to top, rgba(255, 126, 28, 0.95) 0%, rgba(255, 77, 0, 0.72) 16%, rgba(92, 35, 20, 0.22) 34%, transparent 56%),
+		linear-gradient(160deg, rgba(255, 196, 126, 0.28) 0%, rgba(255, 120, 45, 0.18) 36%, transparent 72%),
+		linear-gradient(20deg, rgba(198, 206, 218, 0.16) 0%, rgba(113, 125, 146, 0.08) 44%, transparent 78%);
+	mix-blend-mode: screen;
+	animation: Component-Disintegration-Card-Keyframes-Destruction-Overlay var(--destruction-duration, 2000ms) linear forwards;
+}
+
+.Component-Disintegration-Card-State-burned {
+	opacity: 0;
+	transform: scale(0.97) translateY(-10px);
+	pointer-events: none;
+	transition: none;
+}
+
+.Component-Disintegration-Card-State-burned .Component-Disintegration-Card-Content {
+	opacity: 0 !important;
+	filter: grayscale(1) brightness(0.35) blur(1.6px);
+	clip-path: inset(0 0 100% 0);
+}
+
+.Component-Disintegration-Card-State-burned .Component-Disintegration-Card-Overlay {
+	opacity: 0 !important;
+}
+
+@keyframes Component-Disintegration-Card-Keyframes-Particle-Rise {
+	0% {
+		opacity: 0;
+		transform: translate(0, 0) scale(0.65);
+	}
+	14% {
+		opacity: 1;
+		transform: translate(calc(var(--dis-p-x) * 0.25), calc(var(--dis-p-y) * 0.22)) scale(1);
+	}
+	100% {
+		opacity: 0;
+		transform: translate(var(--dis-p-x), var(--dis-p-y)) scale(0.2);
+	}
+}
+
+@keyframes Component-Disintegration-Card-Keyframes-Overlay-Fade {
+	0% { opacity: 0; }
+	35% { opacity: 0.9; }
+	100% { opacity: 0; }
+}
+
+@keyframes Component-Disintegration-Card-Keyframes-Dust-Content {
+	0% {
+		filter: grayscale(0) brightness(1);
+		opacity: 1;
+		transform: scale(1);
+	}
+	35% {
+		filter: grayscale(0.55) brightness(0.96);
+		opacity: 0.78;
+	}
+	100% {
+		filter: grayscale(1) blur(2px) brightness(0.8);
+		opacity: 0;
+		transform: scale(0.98) translateY(-6px);
+	}
+}
+
+@keyframes Component-Disintegration-Card-Keyframes-Fire-Content {
+	0% {
+		opacity: 1;
+		filter: brightness(1) saturate(1);
+		transform: translateY(0) scale(1);
+	}
+	35% {
+		opacity: 0.92;
+		filter: brightness(1.08) saturate(1.2);
+	}
+	100% {
+		opacity: 0;
+		filter: brightness(1.22) saturate(1.22) blur(1.2px);
+		transform: translateY(-13px) scale(0.968);
+	}
+}
+
+@keyframes Component-Disintegration-Card-Keyframes-Fire-Overlay {
+	0% { opacity: 0; }
+	26% { opacity: 0.95; }
+	100% { opacity: 0; }
+}
+
+@keyframes Component-Disintegration-Card-Keyframes-Destruction-Content {
+	0% {
+		opacity: 1;
+		filter: grayscale(0) brightness(1);
+		clip-path: inset(0 0 0 0);
+		transform: scale(1);
+	}
+	22% {
+		opacity: 1;
+		filter: grayscale(1) brightness(0.56);
+		clip-path: inset(0 0 0 0);
+	}
+	45% {
+		opacity: 0.95;
+		filter: grayscale(1) brightness(0.58) blur(0.35px);
+		clip-path: inset(0 0 22% 0);
+	}
+	70% {
+		opacity: 0.74;
+		filter: grayscale(1) brightness(0.5) blur(0.85px);
+		clip-path: inset(0 0 56% 0);
+		transform: scale(0.993);
+	}
+	88% {
+		opacity: 0.36;
+		filter: grayscale(1) brightness(0.42) blur(1.2px);
+		clip-path: inset(0 0 86% 0);
+	}
+	100% {
+		opacity: 0;
+		filter: grayscale(1) brightness(0.36) blur(1.8px);
+		clip-path: inset(0 0 100% 0);
+		transform: scale(0.982) translateY(-5px);
+	}
+}
+
+@keyframes Component-Disintegration-Card-Keyframes-Destruction-Overlay {
+	0% {
+		opacity: 0.05;
+		transform: translateY(8px) scaleY(0.55);
+	}
+	18% {
+		opacity: 0.92;
+		transform: translateY(0) scaleY(1);
+	}
+	82% {
+		opacity: 0.88;
+		transform: translateY(-1px) scaleY(1.02);
+	}
+	100% {
+		opacity: 0;
+		transform: translateY(-6px) scaleY(1.04);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.Component-Disintegration-Card-Container,
+	.Component-Disintegration-Card-Content,
+	.Component-Disintegration-Card-Overlay,
+	.Component-Disintegration-Card-Particle {
+		animation: none !important;
+		transition: none !important;
+	}
+
+	.Component-Disintegration-Card-State-burned {
+		opacity: 0;
+	}
+}

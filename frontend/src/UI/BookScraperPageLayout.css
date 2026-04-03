@@ -1,10 +1,10 @@
-.ui-scraper-layout__background {
+.Book-Page-Scraper-Layout-Background {
 	min-height: 100vh;
 	width: 100vw;
 	box-sizing: border-box;
 }
 
-.ui-scraper-layout__container {
+.Book-Page-Scraper-Layout-Container {
 	display: flex;
 	flex-direction: row;
 	align-items: flex-start;
@@ -19,12 +19,12 @@
 	padding: 0 1rem;
 }
 
-.ui-scraper-layout__left,
-.ui-scraper-layout__right {
+.Book-Page-Scraper-Layout-Left-Aside,
+.Book-Page-Scraper-Layout-Right-Aside {
 	flex: 0 0 auto;
 }
 
-.ui-scraper-layout__main {
+.Book-Page-Scraper-Layout-Main-Section {
 	flex: 1 1 0%;
 	min-width: 0;
 }

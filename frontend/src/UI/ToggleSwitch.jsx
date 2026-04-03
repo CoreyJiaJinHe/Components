@@ -24,11 +24,11 @@ function ToggleSwitch({
 	}
 
 	return (
-		<label className={disabled ? "ui-toggle ui-toggle--disabled" : "ui-toggle"}>
+		<label className={disabled ? "Component-Toggle-Switch-Container Component-Toggle-Switch-Disabled" : "Component-Toggle-Switch-Container"}>
 			{label !== undefined && label !== null && (
-				<span className="ui-toggle__label">{label}</span>
+				<span className="Component-Toggle-Switch-Label">{label}</span>
 			)}
-			<span className="ui-toggle__switch">
+			<span className="Component-Toggle-Switch-Track-Wrapper">
 				<input
 					type="checkbox"
 					role="switch"
@@ -37,7 +37,7 @@ function ToggleSwitch({
 					disabled={disabled}
 					onChange={handleChange}
 				/>
-				<span className="ui-toggle__slider" aria-hidden="true" />
+				<span className="Component-Toggle-Switch-Slider" aria-hidden="true" />
 			</span>
 		</label>
 	);

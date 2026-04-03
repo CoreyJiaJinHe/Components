@@ -4,7 +4,7 @@
 	--ui-navbar-hover-bg: #393e46;
 }
 
-.ui-navbar {
+.Component-Generic-Navbar-Container {
 	width: 100%;
 	background: var(--ui-navbar-bg);
 	color: var(--ui-navbar-fg);
@@ -15,30 +15,30 @@
 	box-sizing: border-box;
 }
 
-.ui-navbar__left,
-.ui-navbar__center,
-.ui-navbar__right {
+.Component-Generic-Navbar-Left-Section,
+.Component-Generic-Navbar-Center-Section,
+.Component-Generic-Navbar-Right-Section {
 	display: flex;
 	align-items: center;
 	height: 100%;
 }
 
-.ui-navbar__left {
+.Component-Generic-Navbar-Left-Section {
 	flex: 1;
 }
 
-.ui-navbar__center {
+.Component-Generic-Navbar-Center-Section {
 	flex: 1;
 	justify-content: center;
 }
 
-.ui-navbar__right {
+.Component-Generic-Navbar-Right-Section {
 	margin-left: auto;
 	justify-content: flex-end;
 	gap: 12px;
 }
 
-.ui-navbar__links {
+.Component-Generic-Navbar-Links-List {
 	display: flex;
 	align-items: center;
 	height: 100%;
@@ -48,7 +48,7 @@
 	margin: 0;
 }
 
-.ui-navbar__link {
+.Component-Generic-Navbar-Link-Anchor {
 	color: var(--ui-navbar-fg);
 	text-decoration: none;
 	font-weight: 500;
@@ -57,21 +57,34 @@
 	transition: background 0.2s;
 }
 
-.ui-navbar__link:hover {
+.Component-Generic-Navbar-Link-Anchor:hover {
 	background: var(--ui-navbar-hover-bg);
 }
 
-.ui-navbar--mobile {
+.Component-Generic-Navbar-Mobile-Mode {
 	padding: 0 8px;
 }
 
-.ui-navbar--mobile .ui-navbar__links {
+.Component-Generic-Navbar-Mobile-Mode .Component-Generic-Navbar-Links-List {
 	gap: 0.5em;
 }
 
-.ui-navbar--mobile .ui-navbar__link {
+.Component-Generic-Navbar-Mobile-Mode .Component-Generic-Navbar-Link-Anchor {
 	padding: 0.5em 0.7em;
 	border-radius: 0;
 	min-width: 60px;
 	text-align: center;
+}
+
+.Component-App-Theme-Night .Component-Generic-Navbar-Container {
+	background: #0f172a;
+	border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+}
+
+.Component-App-Theme-Night .Component-Generic-Navbar-Link-Anchor {
+	color: #e5e7eb;
+}
+
+.Component-App-Theme-Night .Component-Generic-Navbar-Link-Anchor:hover {
+	background: #1e293b;
 }

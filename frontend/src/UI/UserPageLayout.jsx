@@ -1,26 +1,16 @@
 import React from "react";
 import "./UserPageLayout.css";
+import DisintegrationCard from "./DisintegrationCard.jsx";
 
 const defaultContent = (
 	<div>
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-		<p>Etiam porta sem malesuada magna mollis euismod.</p>
+		<p>There was supposed to be content here./.</p>
 	</div>
 );
 
 const defaultModal = (
-	<div
-		style={{
-			position: "fixed",
-			right: "1rem",
-			bottom: "1rem",
-			padding: "0.75rem",
-			background: "#1f2937",
-			color: "#fff",
-			borderRadius: "10px",
-		}}
-	>
-		Lorem ipsum dolor sit amet.
+	<div className="User-Page-Modal-Default">
+		I am a little bar in the bottom right!
 	</div>
 );
 
@@ -31,12 +21,21 @@ const defaultModal = (
  * - nav: ReactNode
  * - content: ReactNode
  * - modal: ReactNode
+ * - enableBurnable: boolean (default false)
  */
-function UserPageLayout({ nav = null, content = defaultContent, modal = defaultModal }) {
+function UserPageLayout({ nav = null, content = defaultContent, modal = defaultModal, enableBurnable = false }) {
+	const renderedContent = enableBurnable
+		? <DisintegrationCard>{content}</DisintegrationCard>
+		: content;
+
 	return (
 		<>
 			{nav}
-			<div className="ui-user-layout__container">{content}</div>
+			<div className="User-Page-Layout-Container">
+				<div className="User-Page-Layout-Panel">
+					{renderedContent}
+				</div>
+			</div>
 			{modal}
 		</>
 	);

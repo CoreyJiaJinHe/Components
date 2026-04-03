@@ -1,11 +1,11 @@
-.ui-books-layout__heading {
+.Books-Page-Layout-Heading-Container {
 	text-align: center;
 	margin-top: 1.5rem;
 	margin-bottom: 1.5rem;
 	box-sizing: border-box;
 }
 
-.ui-books-layout {
+.Books-Page-Layout-Main-Container {
 	margin-top: 2.5rem;
 	display: flex;
 	justify-content: center;
@@ -13,7 +13,7 @@
 	box-sizing: border-box;
 }
 
-.ui-books-layout__sidebar {
+.Books-Page-Layout-Sidebar-Aside {
 	width: 14rem;
 	min-width: 12rem;
 	max-height: 80vh;
@@ -23,7 +23,7 @@
 	box-sizing: border-box;
 }
 
-.ui-books-layout__content {
+.Books-Page-Layout-Content-Section {
 	flex: 1 1 0%;
 	max-width: 72rem;
 	height: 80vh;

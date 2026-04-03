@@ -43,11 +43,11 @@ function BookScraperPageLayout({
 		<>
 			{overlay}
 			{nav}
-			<div className="ui-scraper-layout__background">
-				<div className="ui-scraper-layout__container">
-					{leftPanel && <aside className="ui-scraper-layout__left">{leftPanel}</aside>}
-					<section className="ui-scraper-layout__main">{main}</section>
-					{rightPanel && <aside className="ui-scraper-layout__right">{rightPanel}</aside>}
+			<div className="Book-Page-Scraper-Layout-Background">
+				<div className="Book-Page-Scraper-Layout-Container">
+					{leftPanel && <aside className="Book-Page-Scraper-Layout-Left-Aside">{leftPanel}</aside>}
+					<section className="Book-Page-Scraper-Layout-Main-Section">{main}</section>
+					{rightPanel && <aside className="Book-Page-Scraper-Layout-Right-Aside">{rightPanel}</aside>}
 				</div>
 			</div>
 		</>
