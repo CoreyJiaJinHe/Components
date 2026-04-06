@@ -75,26 +75,7 @@ function HomePreview() {
 function BookScraperPreview() {
   return (
     <PageSection title="Book Scraper Page Layout">
-      <BookScraperPageLayout
-        leftPanel={
-          <ContentCard title="Filters">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>
-          </ContentCard>
-        }
-        main={
-          <ContentCard title="Scraper Results">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
-            <p>Curabitur blandit tempus porttitor. Nulla vitae elit libero, a pharetra augue.</p>
-          </ContentCard>
-        }
-        rightPanel={
-          <ContentCard title="Statistics">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <p>Donec id elit non mi porta gravida at eget metus.</p>
-          </ContentCard>
-        }
-      />
+      <BookScraperPageLayout />
     </PageSection>
   )
 }

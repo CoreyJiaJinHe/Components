@@ -1,16 +1,18 @@
 .Book-Page-Scraper-Layout-Background {
 	min-height: 100vh;
-	width: 100vw;
+	width: 100%;
+	overflow-x: hidden;
 	box-sizing: border-box;
 }
 
 .Book-Page-Scraper-Layout-Container {
 	display: flex;
+	flex-wrap: wrap;
 	flex-direction: row;
 	align-items: flex-start;
 	justify-content: center;
 	margin-top: 2.5rem;
-	gap: 6rem;
+	gap: 2rem;
 	max-width: 1400px;
 	margin-left: auto;
 	margin-right: auto;
@@ -21,10 +23,190 @@
 
 .Book-Page-Scraper-Layout-Left-Aside,
 .Book-Page-Scraper-Layout-Right-Aside {
-	flex: 0 0 auto;
+	flex: 0 1 280px;
+	min-width: 240px;
 }
 
 .Book-Page-Scraper-Layout-Main-Section {
-	flex: 1 1 0%;
+	flex: 1 1 520px;
 	min-width: 0;
+}
+
+.Book-Page-Scraper-Section-Heading {
+	margin: 0 0 0.75rem;
+	font-size: 1.05rem;
+}
+
+.Book-Page-Scraper-Filters-Form,
+.Book-Page-Scraper-Statistics-Section,
+.Book-Page-Scraper-Results-Section {
+	padding: 1rem;
+	border: 1px solid #d8dee8;
+	border-radius: 12px;
+	background: #ffffff;
+	box-sizing: border-box;
+}
+
+.Book-Page-Scraper-Filters-Form {
+	display: flex;
+	flex-direction: column;
+	gap: 0.55rem;
+}
+
+.Book-Page-Scraper-Field-Label {
+	font-size: 0.85rem;
+	font-weight: 600;
+	color: #334155;
+}
+
+.Book-Page-Scraper-Field-Input,
+.Book-Page-Scraper-Field-Select {
+	width: 100%;
+	padding: 0.5rem 0.6rem;
+	border: 1px solid #cbd5e1;
+	border-radius: 8px;
+	font: inherit;
+	box-sizing: border-box;
+	background: #fff;
+}
+
+.Book-Page-Scraper-Range-Fields {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 0.6rem;
+}
+
+.Book-Page-Scraper-Range-Field-Group {
+	min-width: 0;
+}
+
+.Book-Page-Scraper-Checkbox-Group {
+	display: flex;
+	flex-direction: column;
+	gap: 0.45rem;
+	margin-top: 0.4rem;
+}
+
+.Book-Page-Scraper-Checkbox-Label {
+	font-size: 0.92rem;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.45rem;
+}
+
+.Book-Page-Scraper-Search-Button {
+	margin-top: 0.7rem;
+	padding: 0.58rem 0.8rem;
+	border-radius: 9px;
+	border: 1px solid #334155;
+	background: #1f2937;
+	color: #f8fafc;
+	font-weight: 700;
+	cursor: pointer;
+}
+
+.Book-Page-Scraper-Search-Button:hover {
+	background: #0f172a;
+}
+
+.Book-Page-Scraper-Results-Section {
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
+}
+
+.Book-Page-Scraper-Result-Card {
+	padding: 0.8rem;
+	border-radius: 10px;
+	border: 1px solid #dbe3ee;
+	background: #f8fafc;
+	box-sizing: border-box;
+	text-align: left;
+	width: 100%;
+	cursor: pointer;
+}
+
+.Book-Page-Scraper-Result-Card:hover {
+	border-color: #94a3b8;
+	background: #eef2f7;
+}
+
+.Book-Page-Scraper-Result-Card-Selected {
+	border-color: #3b82f6;
+	box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.22);
+	background: #eff6ff;
+}
+
+.Book-Page-Scraper-Result-Title {
+	margin: 0 0 0.45rem;
+	font-size: 1rem;
+}
+
+.Book-Page-Scraper-Result-Card p {
+	margin: 0 0 0.35rem;
+}
+
+.Book-Page-Scraper-Result-Card p:last-child {
+	margin-bottom: 0;
+}
+
+.Book-Page-Scraper-Results-Empty-State {
+	margin: 0;
+	padding: 0.8rem;
+	border: 1px dashed #cbd5e1;
+	border-radius: 10px;
+	background: #f8fafc;
+	color: #475569;
+}
+
+.Book-Page-Scraper-Statistics-Section {
+	display: flex;
+	flex-direction: column;
+	gap: 0.6rem;
+}
+
+.Book-Page-Scraper-Statistic-Row {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0.5rem 0.6rem;
+	border-radius: 8px;
+	background: #f8fafc;
+	border: 1px solid #dbe3ee;
+}
+
+.Book-Page-Scraper-Statistic-Label {
+	color: #334155;
+}
+
+.Book-Page-Scraper-Statistic-Value {
+	color: #0f172a;
+}
+
+.Book-Page-Scraper-Statistics-Empty-State {
+	margin: 0;
+	padding: 0.8rem;
+	border: 1px dashed #cbd5e1;
+	border-radius: 10px;
+	background: #f8fafc;
+	color: #475569;
+}
+
+@media (max-width: 1024px) {
+	.Book-Page-Scraper-Layout-Container {
+		gap: 1rem;
+	}
+
+	.Book-Page-Scraper-Layout-Left-Aside,
+	.Book-Page-Scraper-Layout-Right-Aside,
+	.Book-Page-Scraper-Layout-Main-Section {
+		flex: 1 1 100%;
+		min-width: 0;
+	}
+}
+
+@media (max-width: 560px) {
+	.Book-Page-Scraper-Range-Fields {
+		grid-template-columns: 1fr;
+	}
 }

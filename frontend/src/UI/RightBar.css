@@ -61,6 +61,8 @@
 .Component-Right-Bar-Container .Component-Right-Bar-Toggle-Container {
     width: 100%;
     margin-bottom: 0;
+    padding-left: 10px;
+    box-sizing: border-box;
 }
 
 .Component-Right-Bar-Container .Component-Toggle-Switch-Container {
